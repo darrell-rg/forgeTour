@@ -14,8 +14,8 @@
     ></script>
     <style>
       #panorama {
-        width: 1280px;
-        height: 800px;
+        width: 100%;
+        height: 400px;
       }
       .custom-hotspot {
         height: 50px;
@@ -58,11 +58,11 @@
         default: {
           firstScene: "welding",
           sceneFadeDuration: 400,
-        //   hotSpotDebug: true,
+          hotSpotDebug: true,
           autoLoad: true,
           compass: true,
           vaov: 80,
-          "orientationOnByDefault ": true,
+        //   "orientationOnByDefault ": true,
           strings: {
             // Labels
             loadButtonLabel: "Click to<br>Load<br>Panorama",
@@ -147,8 +147,37 @@
                 pitch: -24,
                 yaw: -155,
                 type: "info",
-                text: "Forge Welding Classes",
-                URL: "https://www.tryworkbench.co/activity/5d4a4bf4-38bc-4d72-8456-543f90bb30e5#top"
+                text: "Power Hammer",
+              },
+              {
+                pitch: -24,
+                yaw: 32,
+                type: "info",
+                text: "Fixture Table",
+              },
+              {
+                pitch: -2,
+                yaw: 150,
+                type: "info",
+                text: "Power Hammer",
+              },
+              {
+                pitch: -10,
+                yaw: 120,
+                type: "info",
+                text: "Coal Forge",
+              },
+              {
+                pitch: 5,
+                yaw: -35,
+                type: "info",
+                text: "Hydraulic Press",
+              },
+              {
+                pitch: -25,
+                yaw: -120,
+                type: "info",
+                text: "Propane Forge",
               },
             ],
           },
@@ -169,6 +198,24 @@
                 sceneId: "coal",
                 targetYaw: 2,
                 targetPitch: 2,
+              },
+              {
+                pitch: -6,
+                yaw: -8,
+                type: "info",
+                text: "Belt Grinder",
+              },
+              {
+                pitch: -16,
+                yaw: 137,
+                type: "info",
+                text: "Iron Worker",
+              },
+              {
+                pitch: -15,
+                yaw: 30,
+                type: "info",
+                text: "Fly press",
               },
             ],
           },
