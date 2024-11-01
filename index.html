@@ -62,13 +62,14 @@
     <div>
       <p>Test of Innovation Forge Virtual Tour</p>
       <p>
-        Window height: <span id="height"></span> Width: <span id="width"></span>
+        Window W:H <span id="width"></span>,<span id="height"> </span> HFOV: <span id="hfov"></span>
       </p>
       <p>Pitch: <span id="pitch"></span> Yaw : <span id="yaw"></span></p>
     </div>
     <script>
       const heightOutput = document.querySelector("#height");
       const widthOutput = document.querySelector("#width");
+      const hfovOutput = document.querySelector("#hfov");
 
       let aspectRatio = window.innerWidth / window.innerHeight;
 
@@ -82,6 +83,7 @@
         // adjust fov for portrait or landscape screens
         if (aspectRatio > 1) HFOV = 90;
         if (aspectRatio < 1) HFOV = 60;
+        hfovOutput.textContent = HFOV;
       }
 
       updateSize();
@@ -96,6 +98,7 @@
           compass: true,
           vaov: 80, // the pixel 7a camera is about 80 deg fov
           hfov: HFOV,
+          orientationOnByDefault: true,
           strings: {
             // Labels
             loadButtonLabel: "Click to<br>Load<br>Panorama",
