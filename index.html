@@ -15,7 +15,8 @@
     <style>
       #panorama {
         width: 100%;
-        height: 400px;
+        height: 80vh;
+        min-height: 400px;
       }
       .custom-hotspot {
         height: 50px;
@@ -75,7 +76,7 @@
           welding: {
             title: "Welding Tables",
             author:
-              "This end of the shop has large welding tables and welding machines.",
+              "The east of the shop has large welding tables and welding machines.",
             northOffset: 90,
             hfov: 90,
             pitch: 0,
@@ -84,23 +85,23 @@
             panorama: "images/panos/welding.jpg",
             hotSpots: [
               {
-                pitch: -12,
+                pitch: -2,
                 yaw: 167,
                 type: "scene",
-                text: "Coal Forge",
+                text: "Middle",
                 sceneId: "coal",
                 targetPitch: -2,
                 targetYaw: -180,
               },
               {
-                pitch: -24,
+                pitch: -14,
                 yaw: -155,
                 type: "info",
                 text: "Welding Machines for Welding Classes",
                 URL: "https://www.tryworkbench.co/activity/5d4a4bf4-38bc-4d72-8456-543f90bb30e5#top"
               },
               {
-                pitch: -15,
+                pitch: -5,
                 yaw: -2,
                 type: "info",
                 text: "Tube Bender",
@@ -118,7 +119,7 @@
           coal: {
             title: "Coal Forge",
             author:
-              "Here we have the coal forge, power hammers, and demo anvil.",
+              "In the middle the coal forge, power hammers, and demo anvil.",
             hfov: 90,
             yaw: 5,
             northOffset: 90,
@@ -126,55 +127,55 @@
             panorama: "images/panos/middle2.jpg",
             hotSpots: [
               {
-                pitch: -14,
+                pitch: -4,
                 yaw: -21,
                 type: "scene",
-                text: "Welding Area",
+                text: "Go East",
                 sceneId: "welding",
                 targetYaw: -23,
                 targetPitch: 2,
               },
               {
-                pitch: -15,
+                pitch: -5,
                 yaw: 172.9,
                 type: "scene",
-                text: "Student Anvils, Grinders",
+                text: "Go West",
                 sceneId: "anvils",
                 targetPitch: -18,
                 targetYaw: -100,
               },
               {
-                pitch: -24,
+                pitch: -4,
                 yaw: -155,
                 type: "info",
                 text: "Power Hammer",
               },
               {
-                pitch: -24,
-                yaw: 32,
+                pitch: -12,
+                yaw: 24,
                 type: "info",
                 text: "Fixture Table",
               },
               {
-                pitch: -2,
+                pitch: -12,
                 yaw: 150,
                 type: "info",
-                text: "Power Hammer",
+                text: "Slack Tank",
               },
               {
-                pitch: -10,
+                pitch: 0,
                 yaw: 120,
                 type: "info",
                 text: "Coal Forge",
               },
               {
-                pitch: 5,
+                pitch: 15,
                 yaw: -35,
                 type: "info",
                 text: "Hydraulic Press",
               },
               {
-                pitch: -25,
+                pitch: -15,
                 yaw: -120,
                 type: "info",
                 text: "Propane Forge",
@@ -184,38 +185,50 @@
           anvils: {
             title: "Student Anvils",
             author:
-              "This side of the shop has anvils, Grinders, and the fly press.",
+              "At the west end are anvils, Grinders, and the fly press.",
             hfov: 90,
             yaw: 5,
             type: "equirectangular",
             panorama: "images/panos/studentArea.jpg",
             hotSpots: [
               {
-                pitch: -12,
+                pitch: -2,
                 yaw: 65,
                 type: "scene",
-                text: "Coal Forge",
+                text: "Middle",
                 sceneId: "coal",
                 targetYaw: 2,
                 targetPitch: 2,
               },
               {
-                pitch: -6,
+                pitch: 4,
                 yaw: -8,
                 type: "info",
                 text: "Belt Grinder",
               },
               {
-                pitch: -16,
+                pitch: -6,
                 yaw: 137,
                 type: "info",
                 text: "Iron Worker",
               },
               {
-                pitch: -15,
+                pitch: -5,
                 yaw: 30,
                 type: "info",
                 text: "Fly press",
+              },
+              {
+                pitch: -8,
+                yaw: -189,
+                type: "info",
+                text: "Student Anvil",
+              },
+              {
+                pitch: -15,
+                yaw: -23,
+                type: "info",
+                text: "Student Anvil",
               },
             ],
           },
