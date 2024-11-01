@@ -4,14 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tour</title>
-    <link
-      rel="stylesheet"
-      href="pannellum/pannellum.css"
-    />
-    <script
-      type="text/javascript"
-      src="pannellum/pannellum.js"
-    ></script>
+    <link rel="stylesheet" href="pannellum/pannellum.css" />
+    <script type="text/javascript" src="pannellum/pannellum.js"></script>
     <style>
       #panorama {
         width: 100%;
@@ -50,20 +44,58 @@
         left: -10px;
         margin: 0 50%;
       }
+
+      /* always show the hotspot tooltips */
+    div.pnlm-tooltip.pnlm-info span {
+        visibility: visible !important;
+    }   
+
+    /* always hide the info icon */
+    div.pnlm-hotspot-base.pnlm-hotspot.pnlm-sprite.pnlm-info{
+        visibility: hidden !important;
+    }   
     </style>
   </head>
   <body>
     <div id="panorama"></div>
+
+    <div>
+      <p>Test of Innovation Forge Virtual Tour</p>
+      <p>
+        Window height: <span id="height"></span> Width: <span id="width"></span>
+      </p>
+      <p>Pitch: <span id="pitch"></span> Yaw : <span id="yaw"></span></p>
+    </div>
     <script>
+      const heightOutput = document.querySelector("#height");
+      const widthOutput = document.querySelector("#width");
+
+      let aspectRatio = window.innerWidth / window.innerHeight;
+
+      let HFOV = 60;
+
+      function updateSize() {
+        heightOutput.textContent = window.innerHeight;
+        widthOutput.textContent = window.innerWidth;
+        aspectRatio = window.innerWidth / window.innerHeight;
+
+        // adjust fov for portrait or landscape screens
+        if (aspectRatio > 1) HFOV = 90;
+        if (aspectRatio < 1) HFOV = 60;
+      }
+
+      updateSize();
+      window.addEventListener("resize", updateSize);
+
       pannellum.viewer("panorama", {
         default: {
           firstScene: "welding",
           sceneFadeDuration: 400,
-          hotSpotDebug: true,
+        //   hotSpotDebug: true,
           autoLoad: true,
           compass: true,
-          vaov: 80,
-        //   "orientationOnByDefault ": true,
+          vaov: 80, // the pixel 7a camera is about 80 deg fov
+          hfov: HFOV,
           strings: {
             // Labels
             loadButtonLabel: "Click to<br>Load<br>Panorama",
@@ -78,7 +110,6 @@
             author:
               "The east of the shop has large welding tables and welding machines.",
             northOffset: 90,
-            hfov: 90,
             pitch: 0,
             yaw: 180,
             type: "equirectangular",
@@ -88,7 +119,7 @@
                 pitch: -2,
                 yaw: 167,
                 type: "scene",
-                text: "Middle",
+                text: "Coal Forge",
                 sceneId: "coal",
                 targetPitch: -2,
                 targetYaw: -180,
@@ -98,7 +129,7 @@
                 yaw: -155,
                 type: "info",
                 text: "Welding Machines for Welding Classes",
-                URL: "https://www.tryworkbench.co/activity/5d4a4bf4-38bc-4d72-8456-543f90bb30e5#top"
+                URL: "https://www.tryworkbench.co/activity/5d4a4bf4-38bc-4d72-8456-543f90bb30e5#top",
               },
               {
                 pitch: -5,
@@ -106,21 +137,20 @@
                 type: "info",
                 text: "Tube Bender",
               },
-            //   {
-            //     pitch: -24,
-            //     yaw: -155,
-            //     cssClass: "custom-hotspot",
-            //     createTooltipFunc: hotspot,
-            //     createTooltipArgs: "Welding Machines",
-            //   },
+              //   {
+              //     pitch: -24,
+              //     yaw: -155,
+              //     cssClass: "custom-hotspot",
+              //     createTooltipFunc: hotspot,
+              //     createTooltipArgs: "Welding Machines",
+              //   },
             ],
           },
 
           coal: {
             title: "Coal Forge",
             author:
-              "In the middle the coal forge, power hammers, and demo anvil.",
-            hfov: 90,
+              "In the middle of the shop are the coal forge, power hammers, and demo anvil.",
             yaw: 5,
             northOffset: 90,
             type: "equirectangular",
@@ -130,7 +160,7 @@
                 pitch: -4,
                 yaw: -21,
                 type: "scene",
-                text: "Go East",
+                text: "East End",
                 sceneId: "welding",
                 targetYaw: -23,
                 targetPitch: 2,
@@ -139,7 +169,7 @@
                 pitch: -5,
                 yaw: 172.9,
                 type: "scene",
-                text: "Go West",
+                text: "West End",
                 sceneId: "anvils",
                 targetPitch: -18,
                 targetYaw: -100,
@@ -184,9 +214,7 @@
           },
           anvils: {
             title: "Student Anvils",
-            author:
-              "At the west end are anvils, Grinders, and the fly press.",
-            hfov: 90,
+            author: "At the west end are anvils, Grinders, and the fly press.",
             yaw: 5,
             type: "equirectangular",
             panorama: "images/panos/studentArea.jpg",
@@ -195,7 +223,7 @@
                 pitch: -2,
                 yaw: 65,
                 type: "scene",
-                text: "Middle",
+                text: "Coal Forge",
                 sceneId: "coal",
                 targetYaw: 2,
                 targetPitch: 2,
@@ -235,19 +263,17 @@
         },
       });
 
-
-
-      
-    // Hot spot creation function
-    function hotspot(hotSpotDiv, args) {
-        hotSpotDiv.classList.add('custom-tooltip');
-        var span = document.createElement('span');
+      // Hot spot creation function
+      function hotspot(hotSpotDiv, args) {
+        hotSpotDiv.classList.add("custom-tooltip");
+        var span = document.createElement("span");
         span.innerHTML = args;
         hotSpotDiv.appendChild(span);
-        span.style.width = span.scrollWidth - 20 + 'px';
-        span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
-        span.style.marginTop = -span.scrollHeight - 12 + 'px';
-    }
+        span.style.width = span.scrollWidth - 20 + "px";
+        span.style.marginLeft =
+          -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + "px";
+        span.style.marginTop = -span.scrollHeight - 12 + "px";
+      }
     </script>
   </body>
 </html>
