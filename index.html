@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+    #panorama {
+        width: 1280px;
+        height: 800px;
+    }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {   
+    "default": {
+        "firstScene": "welding",
+        "author": "Otto",
+        "sceneFadeDuration": 400,
+        "hotSpotDebug": true,
+        "autoLoad": true,
+        "compass": true,
+        "vaov":80,
+        "orientationOnByDefault ":true,
+    },
+
+    "scenes": {
+        "welding": {
+            "title": "Welding Tables",
+            "northOffset": 90,
+            "hfov": 90,
+            "pitch": 0,
+            "yaw": 180,
+            "type": "equirectangular",
+            "panorama": "images/panos/welding.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -7.1,
+                    "yaw": 172.9,
+                    "type": "scene",
+                    "text": "Coal Forge",
+                    "sceneId": "coal"
+                }
+            ]
+        },
+
+        "coal": {
+            "title": "Coal Forge",
+            "hfov": 90,
+            "yaw": 5,
+            "northOffset": 90,
+            "type": "equirectangular",
+            "panorama": "images/panos/middle2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "Welding Area",
+                    "sceneId": "circle",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                },
+                {
+                    "pitch": -7.1,
+                    "yaw": 172.9,
+                    "type": "scene",
+                    "text": "Student Anvils",
+                    "sceneId": "anvils"
+                }
+            ]
+        },
+        "anvils": {
+            "title": "Student Anvils",
+            "hfov": 90,
+            "yaw": 5,
+            "type": "equirectangular",
+            "panorama": "images/panos/studentArea.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "Coal Forge",
+                    "sceneId": "coal",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                }
+            ]
+        }
+    }
+});
+</script>
+
+</body>
+</html>
