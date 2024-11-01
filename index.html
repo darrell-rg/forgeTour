@@ -6,11 +6,11 @@
     <title>Tour</title>
     <link
       rel="stylesheet"
-      href="/pannellum/pannellum.css"
+      href="pannellum/pannellum.css"
     />
     <script
       type="text/javascript"
-      src="/pannellum/pannellum.js"
+      src="pannellum/pannellum.js"
     ></script>
     <style>
       #panorama {
@@ -58,7 +58,7 @@
         default: {
           firstScene: "welding",
           sceneFadeDuration: 400,
-          hotSpotDebug: true,
+        //   hotSpotDebug: true,
           autoLoad: true,
           compass: true,
           vaov: 80,
@@ -84,17 +84,19 @@
             panorama: "images/panos/welding.jpg",
             hotSpots: [
               {
-                pitch: -7.1,
-                yaw: 172.9,
+                pitch: -12,
+                yaw: 167,
                 type: "scene",
                 text: "Coal Forge",
                 sceneId: "coal",
+                targetPitch: -2,
+                targetYaw: -180,
               },
               {
                 pitch: -24,
                 yaw: -155,
                 type: "info",
-                text: "Welders for Welding Classes",
+                text: "Welding Machines for Welding Classes",
                 URL: "https://www.tryworkbench.co/activity/5d4a4bf4-38bc-4d72-8456-543f90bb30e5#top"
               },
               {
@@ -124,20 +126,22 @@
             panorama: "images/panos/middle2.jpg",
             hotSpots: [
               {
-                pitch: -0.6,
-                yaw: 37.1,
+                pitch: -14,
+                yaw: -21,
                 type: "scene",
                 text: "Welding Area",
-                sceneId: "circle",
+                sceneId: "welding",
                 targetYaw: -23,
                 targetPitch: 2,
               },
               {
-                pitch: -7.1,
+                pitch: -15,
                 yaw: 172.9,
                 type: "scene",
-                text: "Student Anvils",
+                text: "Student Anvils, Grinders",
                 sceneId: "anvils",
+                targetPitch: -18,
+                targetYaw: -100,
               },
               {
                 pitch: -24,
@@ -158,12 +162,12 @@
             panorama: "images/panos/studentArea.jpg",
             hotSpots: [
               {
-                pitch: -0.6,
-                yaw: 37.1,
+                pitch: -12,
+                yaw: 65,
                 type: "scene",
                 text: "Coal Forge",
                 sceneId: "coal",
-                targetYaw: -23,
+                targetYaw: 2,
                 targetPitch: 2,
               },
             ],
