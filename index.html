@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tour</title>
+    <title>Forge Tour</title>
     <link rel="stylesheet" href="pannellum/pannellum.css" />
     <script type="text/javascript" src="pannellum/pannellum.js"></script>
     <style>
@@ -64,16 +64,19 @@
       <p>
         Window W:H <span id="width"></span>,<span id="height"> </span> HFOV: <span id="hfov"></span>
       </p>
-      <p>Pitch: <span id="pitch"></span> Yaw : <span id="yaw"></span></p>
+      <p><span id="pitch"></span></p>
     </div>
     <script>
       const heightOutput = document.querySelector("#height");
       const widthOutput = document.querySelector("#width");
       const hfovOutput = document.querySelector("#hfov");
+      const pitchOutput = document.querySelector("#pitch");
 
       let aspectRatio = window.innerWidth / window.innerHeight;
 
       let HFOV = 60;
+
+      let pan;
 
       function updateSize() {
         heightOutput.textContent = window.innerHeight;
@@ -84,12 +87,15 @@
         if (aspectRatio > 1) HFOV = 90;
         if (aspectRatio < 1) HFOV = 60;
         hfovOutput.textContent = HFOV;
+        pitchOutput.textContent = "Pitch:"+Math.round(pan.getPitch())+" Yaw:"+Math.round(pan.getYaw());  
       }
 
-      updateSize();
-      window.addEventListener("resize", updateSize);
+      // updateSize();
+      // window.addEventListener("resize", updateSize);
 
-      pannellum.viewer("panorama", {
+      setInterval(updateSize, 500);
+
+      pan = pannellum.viewer("panorama", {
         default: {
           firstScene: "welding",
           sceneFadeDuration: 400,
@@ -140,6 +146,36 @@
                 type: "info",
                 text: "Tube Bender",
               },
+              {
+                pitch: 5,
+                yaw: -39,
+                type: "info",
+                text: "Scroll Compressor",
+              },
+              {
+                pitch: 10,
+                yaw: -165,
+                type: "info",
+                text: "100 Ton Hydraulic Press",
+              },
+              {
+                pitch: 8,
+                yaw: 180,
+                type: "info",
+                text: "300# Erie power hammer",
+              },
+              {
+                pitch: 5,
+                yaw: 140,
+                type: "info",
+                text: "Drill Press",
+              },
+              {
+                pitch: 5,
+                yaw: 100,
+                type: "info",
+                text: "Drill Press",
+              },
               //   {
               //     pitch: -24,
               //     yaw: -155,
@@ -181,7 +217,19 @@
                 pitch: -4,
                 yaw: -155,
                 type: "info",
-                text: "Power Hammer",
+                text: "750# Nazel Power Hammer",
+              },
+              {
+                pitch: 8,
+                yaw: -80,
+                type: "info",
+                text: "300# Erie Power hammer",
+              },
+              {
+                pitch: 8,
+                yaw: 160,
+                type: "info",
+                text: "110# Say Ha Power hammer",
               },
               {
                 pitch: -12,
@@ -190,20 +238,32 @@
                 text: "Fixture Table",
               },
               {
-                pitch: -12,
-                yaw: 150,
+                pitch: 0,
+                yaw: -10,
+                type: "info",
+                text: "Welding Tables",
+              },
+              {
+                pitch: -14,
+                yaw: 152,
                 type: "info",
                 text: "Slack Tank",
               },
               {
-                pitch: 0,
-                yaw: 120,
+                pitch: -12,
+                yaw: 127,
                 type: "info",
                 text: "Coal Forge",
               },
               {
                 pitch: 15,
                 yaw: -35,
+                type: "info",
+                text: "100 Ton Hydraulic Press",
+              },
+              {
+                pitch: -15,
+                yaw: -55,
                 type: "info",
                 text: "Hydraulic Press",
               },
